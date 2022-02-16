@@ -1,0 +1,105 @@
+$green: #7ca48c;
+$main: #fefaef;
+$main-dim: #6666662a;
+$text-color:#585656;
+$brown: #b05d3d;
+$button-dim: #e6c4a5bb;
+.Screen{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $main;
+    & .Login-wrapper{
+        @media screen and (max-width:768px){  
+            width: 600px;
+            height: 500px;       
+        }
+        @media screen and (max-width:500px){  
+                width: 400px;
+                height: 600px;       
+        }
+        border: 2px solid $text-color;
+        border-radius: 20px;
+        width: 700px;
+        height: 600px;
+        box-shadow: $green 12px 12px;
+        opacity:0;
+        animation: welcome;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & .selector{
+            width: 90%;
+            height: 10%;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & .the-selector{
+                border: 1px solid white;
+                border-radius: 15px;
+                width: 100%;
+                height: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $green;
+                font-size: 20px;
+                color: $main;
+                caret-color: rgba(0,0,0,0);
+                cursor: pointer;
+               
+                &:hover{
+                   background-color: $button-dim;
+                }
+                
+            }   
+            & .active{
+                border: 5px solid $brown;
+                
+            }      
+        }
+        & .kevinlogo{
+            width: 45%;
+            height: 20%;
+            caret-color: rgba(0,0,0,0);
+
+            @media screen and (max-width:500px){  
+                width:60%;
+                height: 20%;     
+        }
+        }
+        & h2{
+                caret-color: rgba(0,0,0,0);
+                color: $text-color;
+
+        }
+        & p{
+            font-size:18px;
+            font-weight:550;
+            color:$text-color;
+            margin:10px;
+        }
+        & input{
+            font-size: 22px;
+            padding : 15px 100px 15px 20px;
+            background-color: #F2F2F2;
+            border: 0px;
+            border-radius: 8px;
+            &:focus {
+                background-color: white;
+            }  
+        }
+    }
+    @keyframes welcome{
+        100%{
+            opacity: 1;      
+        }
+    }
+}

@@ -95,6 +95,14 @@ $button-dim: #e6c4a5bb;
             &:focus {
                 background-color: white;
             }  
+           
+        }
+        & .wrong{
+            border: 2px solid rgb(253, 49, 49);
+
+        }
+        & .invis{
+            visibility: hidden;
         }
     }
     @keyframes welcome{

@@ -13,6 +13,7 @@ import LoginButton from '../../Assets/Buttons/LoginButton';
 function Login() {
   const [email,setEmail] = useState('')
   const [pass,setPass] = useState('')
+  const [wrong,setWrong] = useState(false)
   const navi = useNavigate()
   const signIntWithGoogleAuth =()=>{
     signInWithPopup(auth, provider)
@@ -21,7 +22,6 @@ function Login() {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
-    console.log(user)
     navi('/dashboard')
   }).catch((error) => {
     const errorCode = error.code;
@@ -39,7 +39,6 @@ function Login() {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
-      console.log(user);
       navi('/dashboard')
 
       // ...
@@ -56,19 +55,21 @@ function Login() {
       // ...
     });
   }
-  const signIn=async()=>{
+  const signInWithFakeEmailandPass=async()=>{
     console.log("singin")
     try{
       const user = await signInWithEmailAndPassword(auth,email,pass)
-      console.log(user)
       if (user){
           navi('/dashboard')
       }
     }
     catch{
-
+      console.log('wrong')
+      setWrong(true)
+      setCount(count+1)
     }
   }
+  const [count,setCount] = useState(0)
   const [Teacher,setTeacher] = useState(false)
   const [Student,setStudent] = useState(true)
   useEffect(()=>{
@@ -102,13 +103,16 @@ function Login() {
         <h2>Teacher login:</h2>
 
         <p>email:</p>
-          <input onChange={(e)=>{setEmail(e.target.value)}}
-          className="email"/>
+          <input 
+           onChange={(e)=>{setEmail(e.target.value)}}
+          className={`email ${wrong && 'wrong'}`}/>
         <p>password:</p>
-          <input type="password"
+          <input  type="password"
           onChange={(e)=>{setPass(e.target.value)}}
-          className="password"/>
-        <Button text="Sign In" onClick={signIn}/>
+          className={`password ${wrong && 'wrong'} ${count >= 5 ? 'invis':''} `}/>
+          {count >= 5 ? <h2>Bro why you must hack this, damn.<br/>
+             Leave my web alone, cheesus.</h2>: <></>}
+        <Button text="Sign In" onClick={signInWithFakeEmailandPass}/>
         </>
        }
       </div>

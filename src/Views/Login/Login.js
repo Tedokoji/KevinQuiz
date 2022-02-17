@@ -19,38 +19,38 @@ function Login() {
     signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
+    // const token = credential.accessToken;
+    // const user = result.user;
     navi('/dashboard')
   }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
+    // const errorCode = error.code;
+    // const errorMessage = error.message;
+    // const email = error.email;
+    // const credential = GoogleAuthProvider.credentialFromError(error);
   });
   }
   const signInWithFacebookAuth = ()=>{
     signInWithPopup(auth, fbprovider)
     .then((result) => {
       // The signed-in user info.
-      const user = result.user;
+      // const user = result.user;
   
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-      const credential = FacebookAuthProvider.credentialFromResult(result);
-      const accessToken = credential.accessToken;
+      // // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      // const credential = FacebookAuthProvider.credentialFromResult(result);
+      // const accessToken = credential.accessToken;
       navi('/dashboard')
 
       // ...
     })
     .catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The AuthCredential type that was used.
-      const credential = FacebookAuthProvider.credentialFromError(error);
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      // // The email of the user's account used.
+      // const email = error.email;
+      // // The AuthCredential type that was used.
+      // const credential = FacebookAuthProvider.credentialFromError(error);
   
       // ...
     });
@@ -110,8 +110,8 @@ function Login() {
           <input  type="password"
           onChange={(e)=>{setPass(e.target.value)}}
           className={`password ${wrong && 'wrong'} ${count >= 5 ? 'invis':''} `}/>
-          {count >= 5 ? <h2>Bro why you must hack this, damn.<br/>
-             Leave my web alone, cheesus.</h2>: <></>}
+          {count >= 5 ? <h2>Bro why you must hack this web man, damn.<br/>
+             Leave my web alone, please, I'm begging you.</h2>: <></>}
         <Button text="Sign In" onClick={signInWithFakeEmailandPass}/>
         </>
        }

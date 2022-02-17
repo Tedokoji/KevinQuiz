@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Dash from "./Views/DashBoard/Dash";
+import Dash from "./Views/MainScreen/DashBoard/Dash";
 import Login from "./Views/Login/Login";
 
 function App() {

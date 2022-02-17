@@ -2,7 +2,7 @@ import React from 'react'
 import './Button.scss'
 function Button(props) {
   return (
-    <div className='default-button' onClick={props.onClick}>
+    <div className={`default-button ${props.className}`} onClick={props.onClick}>
       {props.text}
     </div>
   )

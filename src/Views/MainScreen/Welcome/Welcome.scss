@@ -1,0 +1,39 @@
+$green: #7ca48c;
+$green-dim: #739981;
+$main: #fefaef;
+$main-dim: #6666662a;
+$text-color:#585656;
+$brown: #b05d3d;
+$button-dim: #e6c4a5bb;
+.Welcome{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+   
+    & .navbar-wrapper{
+        width: 100vw;
+        height: 100px;
+        background-color: rgba(0, 0, 0, 0.089);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top:0px
+    }
+    & .buu{
+        display: flex;
+        & .reg{
+            background-color: rgb(66, 138, 72);
+        }
+    }
+    & .sb{
+        position: relative;
+        left: -50px;
+        margin-left:10px;
+    }
+    & .w{
+        width: 100vw;
+        margin-top:-100px
+    }
+}

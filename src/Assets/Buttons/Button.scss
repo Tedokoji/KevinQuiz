@@ -51,5 +51,13 @@ $main-dim: #6666662a;
 }
     &:hover{
         background-color: $main-dim;
+        animation: loginhover;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes loginhover{
+        100%{
+            transform: scale(1.1)
+        }
     }
 }

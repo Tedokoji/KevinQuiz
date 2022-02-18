@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Login.scss'
-import {signInWithPopup,FacebookAuthProvider,
-   GoogleAuthProvider,
-   signInWithEmailAndPassword  } from "firebase/auth";
+import {signInWithPopup, signInWithEmailAndPassword  } from "firebase/auth";
+//  import {FacebookAuthProvider,GoogleAuthProvider} from "firebase/auth";
 import { auth,provider,fbprovider } from '../../Firebase';
 import kevinlogo from '../../staticfiles/Kevin logo.jpg';
 import ggicon from '../../staticfiles/gg.png';

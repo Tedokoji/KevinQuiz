@@ -49,10 +49,15 @@ $main-dim: #6666662a;
         width: 80%;
         height: 10%;    
 }
+@media screen and (max-width:400px){  
+        width: 95%;
+        height: 15%;      
+        font-size: 15px; 
+}
     &:hover{
         background-color: $main-dim;
         animation: loginhover;
-        animation-duration: 1s;
+        animation-duration: .3s;
         animation-fill-mode: forwards;
     }
     @keyframes loginhover{

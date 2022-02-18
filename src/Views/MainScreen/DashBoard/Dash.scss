@@ -1,0 +1,53 @@
+$green: #7ca48c;
+$main: #fefaef;
+$main-dim: #6666662a;
+$text-color:#585656;
+$brown: #b05d3d;
+$button-dim: #e6c4a5bb;
+
+.dashnav{
+    width: 100vw;
+    height: 6vh;
+    border: 1px solid $main-dim;
+    background-color: $green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .profile-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        & .pro-avt{
+            border-radius: 50%;
+            width: 35%;
+            border: 3px solid $main;
+        }
+    }
+    & .profile-name{
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+.tabbar{
+    width: 100vw;
+    background-color: $green;
+    height: 8vh;
+    position: fixed;
+    bottom:0px;
+    display: flex;
+    @media screen and (min-width:1000px){  
+        bottom:86.1vh;
+    }
+   & .tabicons{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex: 1;
+       border: 2px solid $brown;
+       & .tabicon{
+        width: 40px;
+        height: 40px;
+    }
+   }
+}

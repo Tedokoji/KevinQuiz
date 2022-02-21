@@ -5,6 +5,7 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyAtuD41vJd45H8tk9YqdvmwzqQegIaeVUc",
   authDomain: "thuctapapi.firebaseapp.com",
+  databaseURL: "https://thuctapapi-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "thuctapapi",
   storageBucket: "thuctapapi.appspot.com",
   messagingSenderId: "880936347136",

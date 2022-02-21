@@ -7,7 +7,6 @@ $brown: #b05d3d;
 $button-dim: #e6c4a5bb;
 .Welcome{
     width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
    
@@ -32,8 +31,11 @@ $button-dim: #e6c4a5bb;
         left: -50px;
         margin-left:10px;
     }
-    & .w{
-        width: 100vw;
-        margin-top:-100px
-    }
+}
+.w{
+    width: 100vw;
+    margin-top:-100px;
+    @media screen and (max-width:500px){  
+        width:550px;       
+}
 }

@@ -10,6 +10,7 @@ function Welcome() {
     navi('/login')
   }
   return (
+        <>
     <div className='Welcome'>
         <div className='navbar-wrapper'>
           <img src={kevinlogopng}/>
@@ -18,8 +19,9 @@ function Welcome() {
           <Button onClick={navigate} className='sb reg' text="Or Register"/>
           </div>
         </div>
-        <img className='w' src={kevinlogopngfull}/>
     </div>
+        <img className='w' src={kevinlogopngfull}/>
+    </>
   )
 }
 

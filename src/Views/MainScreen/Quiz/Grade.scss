@@ -1,0 +1,31 @@
+$green: #7ca48c;
+$main: #fefaef;
+$main-dim: #6666662a;
+$text-color:#585656;
+$brown: #b05d3d;
+$button-dim: #e6c4a5bb;
+.grade-wrapper{
+    width:100%;
+
+    & .grade-title{
+        font-size: 30px;
+        font-weight: bold;
+        margin:10px;
+        border-bottom: 1px solid black;
+        box-shadow: $green 5px 5px;
+        color: $text-color;
+        &:hover{               
+             border: 1px solid $brown;
+             background-color: $button-dim;
+             cursor:pointer
+
+        }
+    }
+    & .grade{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

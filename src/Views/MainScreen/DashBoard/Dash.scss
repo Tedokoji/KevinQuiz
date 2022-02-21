@@ -7,47 +7,36 @@ $button-dim: #e6c4a5bb;
 
 .dashnav{
     width: 100vw;
-    height: 6vh;
+    height: 50px;
     border: 1px solid $main-dim;
-    background-color: $green;
+    background-color: $main;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    caret-color: rgba(0,0,0,0);
     align-items: center;
     & .profile-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 100px;
+        margin:5px;
         & .pro-avt{
             border-radius: 50%;
-            width: 35%;
-            border: 3px solid $main;
+            width: 40px;
+            border: 2px solid $text-color;
+            cursor:pointer
         }
+        flex: 2
     }
     & .profile-name{
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 600;
+        color: rgba(0, 0, 0, 0.671);
+        flex:5
+
+    }
+    & .expandnav{
+        flex: 1;
+        transform: scale(0.75);
+        cursor:pointer
+        
     }
 }
-.tabbar{
-    width: 100vw;
-    background-color: $green;
-    height: 8vh;
-    position: fixed;
-    bottom:0px;
-    display: flex;
-    @media screen and (min-width:1000px){  
-        bottom:86.1vh;
-    }
-   & .tabicons{
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       flex: 1;
-       border: 2px solid $brown;
-       & .tabicon{
-        width: 40px;
-        height: 40px;
-    }
-   }
-}
+

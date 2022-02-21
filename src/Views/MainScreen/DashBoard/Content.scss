@@ -1,8 +1,14 @@
+$green: #7ca48c;
+$main: #fefaef;
+$main-dim: #6666662a;
+$text-color:#585656;
+$brown: #b05d3d;
+$button-dim: #e6c4a5bb;
+
+
 .content{
     width: 100vw;
     height: 100vh;
-    border: 2px solid black;
-    @media screen and (min-width:1000px){  
-        margin-top: 8vh;
-    }
+    background-color: $main;
+    
 }

@@ -20,7 +20,7 @@ function Dash() {
             <img alt="aaa" className="pro-avt" src={auth.currentUser?.photoURL == null?
             defaultpic : auth.currentUser?.photoURL }/>
        </div>
-        <div className="profile-name">{auth.currentUser?.displayName ==null ?
+        <div className="profile-name">{auth.currentUser?.displayName == null ?
             'Teacher Mode' : auth.currentUser?.displayName}
         </div>
             <svg className="expandnav"

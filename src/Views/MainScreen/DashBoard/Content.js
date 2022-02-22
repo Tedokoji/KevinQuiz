@@ -15,31 +15,28 @@ function Content(props) {
     grade12: false,
     grade11:true
   })
-  function writeUserData(userId, name, email, imageUrl) {
-    set(ref(database, 'users/' + userId), {
-      username: name,
-      email: email,
-      profile_picture : imageUrl
-    });
-  }
   return (
     <div className="content">
-      <Grade title="Grade 11" 
+      <Grade title="Grade 11" className={rendergrade.grade11 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade11:!rendergrade.grade11});}}>
         { rendergrade.grade11 && <>
-        <Thumbnail/>
-        <Thumbnail/>
-        <Thumbnail/>
-        <Thumbnail/>
+        <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/>
+        <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/> <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/> <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/>
         </>}
       </Grade>
-      <Grade title="Grade 12"  
+      <Grade title="Grade 12"  className={rendergrade.grade12 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade12:!rendergrade.grade12});}}>
       { rendergrade.grade12 && <>
-        <Thumbnail/>
-        <Thumbnail/>
-        <Thumbnail/>
-        <Thumbnail/>
+        <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/> <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/> <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/> <Thumbnail title="De thi THPT" category="Unit 10" 
+        onClick={()=>{console.log("hello!");}}/>
+        
         </>}
       </Grade>
    </div>

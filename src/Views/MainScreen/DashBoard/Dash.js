@@ -9,7 +9,7 @@ function Dash() {
     useEffect(()=>{
         console.log(auth.currentUser?.photoURL,auth.currentUser?.displayName);
         console.log(auth);
-        if (auth.currentUser?.email == undefined){
+        if (auth.currentUser?.email === undefined){
             navi('/login')
         }
     })

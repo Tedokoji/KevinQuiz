@@ -13,14 +13,14 @@ function Welcome() {
         <>
     <div className='Welcome'>
         <div className='navbar-wrapper'>
-          <img src={kevinlogopng}/>
+          <img alt="bruh" src={kevinlogopng}/>
           <div className='buu'>
           <Button onClick={navigate} className='sb' text="Sign In"/>
           <Button onClick={navigate} className='sb reg' text="Or Register"/>
           </div>
         </div>
     </div>
-        <img className='w' src={kevinlogopngfull}/>
+        <img className='w' alt="bruh" src={kevinlogopngfull}/>
     </>
   )
 }

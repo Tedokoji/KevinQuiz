@@ -16,7 +16,7 @@ $button-dim: #e6c4a5bb;
 
     &:hover{
         animation: focusQuiz;
-        animation-duration:0.4s;
+        animation-duration:0.3s;
         animation-fill-mode: forwards;
     }
     & .thumbnail-content{
@@ -55,10 +55,13 @@ $button-dim: #e6c4a5bb;
                 color: $text-color;
                 caret-color: rgba(0,0,0,0);
             }
+            & .thumbnail-AccessQuiz-play{
+                caret-color: rgba(0,0,0,0);
+            }
             &:hover{
                 animation: focusPlay;
-                animation-duration:3s;
-                animation-iteration-count: infinite;
+                animation-duration:0.6s;
+                animation-fill-mode: forwards;
                 cursor: pointer
             }
         }
@@ -67,17 +70,18 @@ $button-dim: #e6c4a5bb;
 @keyframes focusQuiz{
     100%{
         transform: scale(1.1);
-        box-shadow: $green 10px 10px;
+        box-shadow: $green 7px 7px;
         
     }
 }
 @keyframes focusPlay{
-    40%{
-       background-color: $button-dim
-        
-    }
-    50%{
-        background-color: $button-dim
-         
+    0%{
+        border: 1px solid black; 
+ 
+     }
+     100%{
+        background-color: $button-dim;
+        transform: scale(1.1);
+        border: 1px solid black; 
      }
 }

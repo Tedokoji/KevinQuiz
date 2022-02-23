@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {auth} from '../../../Firebase/index'
 import defaultpic from '../../../staticfiles/defaultpic.png'
@@ -6,12 +6,12 @@ import Content from './Content'
 import './Dash.scss'
 function Dash() {
     const navi = useNavigate()
-    useLayoutEffect(()=>{
-        if (auth.currentUser === undefined){
-            navi('/')
-        }
+    useEffect(()=>{
         console.log(auth.currentUser?.photoURL,auth.currentUser?.displayName);
         console.log(auth);
+        if (auth.currentUser?.email == undefined){
+            navi('/login')
+        }
     })
   return (
    <>

@@ -1,9 +1,7 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { GET_QUIZES } from '../../../Redux/Types'
 import './Content.scss'
-import { ref, set } from "firebase/database";
-import { database } from '../../../Firebase';
 
 import Thumbnail from '../../../Assets/QuizAssets/Thumbnail';
 import Grade from '../Quiz/Grade';

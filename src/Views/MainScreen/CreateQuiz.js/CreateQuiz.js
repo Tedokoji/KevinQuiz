@@ -13,7 +13,6 @@ function CreateQuiz() {
      11,
      12,
     ]
- const ABCD = ["A", "B", "C", "D"]
  const [grade,setGrade] = useState(6)
  const [unit,setUnit] = useState(1)
  const [tags,setTags] = useState("")
@@ -27,8 +26,8 @@ function CreateQuiz() {
  })
  const [correctone,setCorrectone] = useState('A')
  useEffect(() => {
-     console.log(ans);
- })
+     setCount(0)
+ },[])
 
  const [count,setCount] = useState(0)
  const [CreateQuizToggle,setCreateQuizToggle] = useState(false)

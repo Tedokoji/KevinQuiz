@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { connect } from 'react-redux'
 import { GET_QUIZES } from '../../../Redux/Types'
 import './Content.scss'
-
+import { ref, set } from "firebase/database";
+import { database } from '../../../Firebase';
 
 import Thumbnail from '../../../Assets/QuizAssets/Thumbnail';
 import Grade from '../Quiz/Grade';
@@ -18,21 +19,17 @@ function Content(props) {
     grade8:false,
     grade7:true,
   })
+
+
+
+
+
   return (
     <div className="content">
                <Grade title="Grade 7" className={rendergrade.grade7 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade7:!rendergrade.grade7});}}>
         { rendergrade.grade7 && <>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
+        
         
         
         </>}
@@ -40,16 +37,7 @@ function Content(props) {
                <Grade title="Grade 8" className={rendergrade.grade8 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade8:!rendergrade.grade8});}}>
         { rendergrade.grade8 && <>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
+       
         
         
         </>}
@@ -57,16 +45,7 @@ function Content(props) {
                <Grade title="Grade 9" className={rendergrade.grade9 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade9:!rendergrade.grade9});}}>
         { rendergrade.grade9 && <>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
+       
         
         
         </>}
@@ -74,16 +53,7 @@ function Content(props) {
           <Grade title="Grade 10" className={rendergrade.grade10 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade10:!rendergrade.grade10});}}>
         { rendergrade.grade10 && <>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
+        
         
         
         </>}
@@ -91,16 +61,7 @@ function Content(props) {
       <Grade title="Grade 11" className={rendergrade.grade11 &&"active-grade"}
       onClick={()=>{setrenderGrade({...rendergrade,grade11:!rendergrade.grade11});}}>
         { rendergrade.grade11 && <>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
+        
         
         
         </>}
@@ -110,14 +71,7 @@ function Content(props) {
       { rendergrade.grade12 && <>
         <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
         onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
-        onClick={()=>{console.log("hello!");}}/>
+        
        
         
         </>}

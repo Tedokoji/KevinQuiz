@@ -106,7 +106,7 @@ function Login() {
            onChange={(e)=>{setEmail(e.target.value)}}
           className={`email ${wrong && 'wrong'}`}/>
         <p>password:</p>
-          <input  type="password"
+          <input  type="password" 
           onChange={(e)=>{setPass(e.target.value)}}
           className={`password ${wrong && 'wrong'} ${count >= 5 ? 'invis':''} `}/>
           {count >= 5 ? <h2>Bro why you must hack this web man, damn.<br/>

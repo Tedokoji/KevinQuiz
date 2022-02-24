@@ -4,6 +4,8 @@ import Login from "./Views/Login/Login";
 import Welcome from "./Views/MainScreen/Welcome/Welcome";
 import { Provider } from 'react-redux';
 import {store} from './Redux/Store'
+import Content from "./Views/MainScreen/DashBoard/Content";
+import CreateQuiz from './Views/MainScreen/CreateQuiz.js/CreateQuiz';
 function App() {
   return (
  
@@ -12,7 +14,9 @@ function App() {
       <Route path="/" element={<Welcome/>}/>
       
       <Route path="/login" element={<Login/>}/>
-        <Route path="/dashboard" element={<Dash/>}/>
+        <Route path="/dashboard" element={<><Dash/><Content/></>}/>
+        <Route path="/createquiz" element={<><Dash/><CreateQuiz/></>}/>
+
     </Routes>
       </Provider>
     

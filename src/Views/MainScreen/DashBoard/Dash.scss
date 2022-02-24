@@ -52,6 +52,7 @@ $button-dim: #e6c4a5bb;
         color: $text-color;
         box-shadow: $green 2px 2px;
         margin:10px;
+        padding:5px;
         &:hover{
             background-color: $button-dim;
             cursor:pointer;

@@ -48,8 +48,9 @@ $correct-ans:rgba(170, 252, 48, 0.541);
                 width: 100%;
                 & .unit-input{
                     width: 200px;
-                    font-size: 18px;
-                    padding : 0px 0px 0px 20px;
+                    margin: 10px;
+                    font-size: 20px;
+                    padding : 10px 10px 10px 20px;
                     box-shadow: $green 5px 5px;
                     background-color: #F2F2F2;
                     border: 0px;
@@ -58,7 +59,7 @@ $correct-ans:rgba(170, 252, 48, 0.541);
                     width: 150px;
 
                     font-size: 18px;
-                    padding : 0px 0px 0px 20px;
+                    padding : 10px 10px 10px 20px;
                     box-shadow: $green 5px 5px;
                     background-color: #F2F2F2;
                     border: 0px;
@@ -97,7 +98,9 @@ $correct-ans:rgba(170, 252, 48, 0.541);
 }
 .ans{
     padding:20px;
-    margin-left: 15px;
+    width: 80vw;
+    margin-left: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid $text-color;   
     cursor:pointer;
@@ -125,7 +128,7 @@ $correct-ans:rgba(170, 252, 48, 0.541);
     height: 20vh;
     font-size: 20px;
     padding : 5px 20px 5px 20px;
-    box-shadow: $green 2px 2px;
+    box-shadow: $green 5px 5px;
     background-color: #F2F2F2;
     border: 0px;
     border-radius: 8px;
@@ -142,4 +145,7 @@ $correct-ans:rgba(170, 252, 48, 0.541);
          background-color: $main-dim;
          border: 2px solid $brown
      }
+}
+.req{
+    border: 2px solid red;
 }

@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import './CreateQuiz.scss'
 import 'react-edit-text/dist/index.css';
 import {  ref, set } from "firebase/database";
@@ -16,25 +16,28 @@ function CreateQuiz() {
  const [grade,setGrade] = useState(6)
  const [unit,setUnit] = useState(1)
  const [tags,setTags] = useState("")
+
  const [title,setTitle] = useState("")
  const [question,setQuestion] = useState("d")
  const [ans,setAns] = useState({
-     A: 'a',
-     B: 'b',
-     C: 'c',
-     D: 'd'
+     A: '',
+     B: '',
+     C: '',
+     D: ''
  })
  const [correctone,setCorrectone] = useState('A')
- useEffect(() => {
-     setCount(0)
- },[])
+
 
  const [count,setCount] = useState(0)
  const [CreateQuizToggle,setCreateQuizToggle] = useState(false)
+
  const CreateQuizInfos =()=>{
     
+     if(title === ""){
+         return
+     }
        
-        
+        setCreateQuizToggle(true)
         set(ref(database, 'Grade/' + grade + '/Unit/' + unit + "/" + title), {
             tags:tags,
             
@@ -43,11 +46,35 @@ function CreateQuiz() {
  }
  const addQuizesToDB=()=>{
 
+     setCount(count+1)
+     set(ref(database, 'Grade/' + grade + '/Unit/' + unit + "/" + title+"/"+count), {
+         question:question,
+         ans:ans,
+         correct:correctone
+         
+        });
+        setQuestion("")
+        setAns({
+            A: '',
+            B: '',
+            C: '',
+            D: ''
+        })
+
  }
   return (
     <div className='createquiz'>
         <div className='createform'>
           { CreateQuizToggle === true ? <></>:<>  <div className='sorting-form'>
+                <div className={`create-unit `}>
+                    Title:<input value={title}
+                    onChange={(e)=>{
+                        setTitle(e.target.value)
+                        
+                        }}
+                    type="text" className={`unit-input `}/>
+                    Required!
+                    </div>
                 <div className='create-grade'>
                     Grade:{
                         grade6to12.map(e=>{
@@ -72,20 +99,14 @@ function CreateQuiz() {
                     }}
                   type="text" className="unit-input"/>
                 </div>
-                    <div className='create-unit'>
-                    Title:<input value={title} onChange={(e)=>{
-                        setTitle(e.target.value)
-                        
-                        }}
-                    type="text" className="unit-input"/>
-                    </div>
+                 
                 
             </div>
             <br/>
                    <div className='createquizbtn' onClick={()=>{
                        CreateQuizInfos()
                        
-                       setCreateQuizToggle(true)}}>
+                       }}>
                         CreateQuiz
                     </div>
                     </>}
@@ -104,7 +125,7 @@ function CreateQuiz() {
                             
                         </div>
                         <br/>
-                        
+                      
                         <div onClick={()=>{setCorrectone("A")}}
                          className={`ans ${correctone === "A" ? "ans-selected":""}`}>A
                             <input value={ans.A} onChange={(e)=>{
@@ -141,16 +162,17 @@ function CreateQuiz() {
                     type="text" className="quiz-input"/>
                             
                         </div>  
-
+                        <div className='create-quiz-formmmm'>
+                           Warning: highlighted option <br/>will be 
+                            the correct one
+                            </div>
 
                       <br/>
                     </div>
                 </div>
             </div>
             <br/>
-                        <div className='createquizbtn' onClick={()=>{
-                            addQuizesToDB()
-                            }}>
+                        <div className='createquizbtn' onClick={addQuizesToDB} >
                             Save
                         </div>
             </>

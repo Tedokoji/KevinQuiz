@@ -33,3 +33,13 @@ $button-dim: #e6c4a5bb;
     background-color: $button-dim;
 
 }
+.theunit{
+    width: 100vw;
+    font-size: 20px;
+        font-weight: bold;
+        margin:10px;
+        border-bottom: 1px solid black;
+        box-shadow: $green 5px 5px;
+        color: $text-color;
+        
+}

@@ -18,7 +18,7 @@ function CreateQuiz() {
  const [tags,setTags] = useState("")
 
  const [title,setTitle] = useState("")
- const [question,setQuestion] = useState("d")
+ const [question,setQuestion] = useState("")
  const [ans,setAns] = useState({
      A: '',
      B: '',

@@ -1,92 +1,179 @@
-import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { GET_QUIZES } from '../../../Redux/Types'
+import React, { useState,useLayoutEffect,useEffect } from 'react'
 import './Content.scss'
 
 import Thumbnail from '../../../Assets/QuizAssets/Thumbnail';
 import Grade from '../Quiz/Grade';
-
-
-
+import { database } from '../../../Firebase/index';
+import { ref, child, get } from "firebase/database";
+import { createContext } from "react";
+const QuizContext = createContext()
 function Content(props) {
-  const [rendergrade, setrenderGrade] = useState({
-    grade12: false,
-    grade11:false,
-    grade10:false,
-    grade9:false,
-    grade8:false,
-    grade7:true,
-  })
+ 
+  const [activegrade,setActivegrade] = useState(6)
+  
+  const [Quizdata,setQuizdata] = useState([])
+const getDataQuiz=async()=>{
+  get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+     Object.entries(snapshot.val()).map(datacrap=>{
+        datacrap[1].map((title,index)=>{
+         
+        setQuizdata( Object.entries(title).map(DATASHIT =>{
+          return DATASHIT
+          
+         }))
+        
+        })})
+      
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+ 
+const [load,setLoad] = useState(false)
 
+useLayoutEffect(()=>{
+  getDataQuiz()
+  
+},[activegrade])
+useEffect(()=>{
 
-
-
-
+  setTimeout(()=>{
+   
+    setLoad(true)
+    
+  },1000)
+},[])
   return (
-    <div className="content">
-               <Grade title="Grade 7" className={rendergrade.grade7 &&"active-grade"}
-      onClick={()=>{setrenderGrade({...rendergrade,grade7:!rendergrade.grade7});}}>
-        { rendergrade.grade7 && <>
-        
-        
-        
-        </>}
-      </Grade>
-               <Grade title="Grade 8" className={rendergrade.grade8 &&"active-grade"}
-      onClick={()=>{setrenderGrade({...rendergrade,grade8:!rendergrade.grade8});}}>
-        { rendergrade.grade8 && <>
-       
-        
-        
-        </>}
-      </Grade>
-               <Grade title="Grade 9" className={rendergrade.grade9 &&"active-grade"}
-      onClick={()=>{setrenderGrade({...rendergrade,grade9:!rendergrade.grade9});}}>
-        { rendergrade.grade9 && <>
-       
-        
-        
-        </>}
-      </Grade>
-          <Grade title="Grade 10" className={rendergrade.grade10 &&"active-grade"}
-      onClick={()=>{setrenderGrade({...rendergrade,grade10:!rendergrade.grade10});}}>
-        { rendergrade.grade10 && <>
-        
-        
-        
-        </>}
-      </Grade>
-      <Grade title="Grade 11" className={rendergrade.grade11 &&"active-grade"}
-      onClick={()=>{setrenderGrade({...rendergrade,grade11:!rendergrade.grade11});}}>
-        { rendergrade.grade11 && <>
-        
-        
-        
-        </>}
-      </Grade>
-      <Grade title="Grade 12"  className={rendergrade.grade12 &&"active-grade"}
-      onClick={()=>{setrenderGrade({...rendergrade,grade12:!rendergrade.grade12});}}>
-      { rendergrade.grade12 && <>
-        <Thumbnail title="De thi THPT" category="Unit 10" tags="Quiz,THPT,Femdom,Monster girl"
+    <QuizContext.Provider value={Quizdata}>
+
+   {load && <div className="content">
+      <Grade title="Grade 6" className={activegrade === 6 ? "active-grade":""}
+      onClick={()=>{setActivegrade(6);getDataQuiz()}}>
+      
+        { activegrade === 6 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
-        
-       
-        
-        </>}
+          )
+        })
+
+      }
+        </>:<></>}
       </Grade>
-   </div>
+      <Grade title="Grade 7" className={activegrade === 7 ? "active-grade":""}
+      onClick={()=>{setActivegrade(7)}}>
+      
+        { activegrade === 7 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
+        onClick={()=>{console.log("hello!");}}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade>  
+      <Grade title="Grade 8" className={activegrade === 8 ? "active-grade":""}
+      onClick={()=>{setActivegrade(8)}}>
+      
+        { activegrade === 8 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
+        onClick={()=>{console.log("hello!");}}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade>  
+      <Grade title="Grade 9" className={activegrade === 9 ? "active-grade":""}
+      onClick={()=>{setActivegrade(9)}}>
+      
+        { activegrade === 9 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
+        onClick={()=>{console.log("hello!");}}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade>  
+      <Grade title="Grade 10" className={activegrade === 10 ? "active-grade":""}
+      onClick={()=>{setActivegrade(10)}}>
+      
+        { activegrade === 10 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
+        onClick={()=>{console.log("hello!");}}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade>  
+      <Grade title="Grade 11" className={activegrade === 11 ? "active-grade":""}
+      onClick={()=>{setActivegrade(11)}}>
+      
+        { activegrade === 11 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
+        onClick={()=>{console.log("hello!");}}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade> 
+      <Grade title="Grade 12" className={activegrade === 12 ? "active-grade":""}
+      onClick={()=>{setActivegrade(12)}}>
+      
+        { activegrade === 12 ? <>
+
+      {
+        Quizdata.map(e=>{
+          return(
+            <Thumbnail title={e[0]} category="Unit 10" 
+            tags={e[1].tags}
+        onClick={()=>{console.log("hello!");}}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade> 
+   </div>}
+   </QuizContext.Provider>
+
   )
 }
 
-const mapStateToProps = (state)=>{
-  return{
-    quizes: state.quizes
-  }
-}
-const mapDispatchToProps = (dispatch)=>{
-  return{
-    getQuizes: ()=>{dispatch(GET_QUIZES())}
-  }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(Content)
+export default Content

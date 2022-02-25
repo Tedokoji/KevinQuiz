@@ -1,1 +1,0 @@
-export const GET_QUIZES = 'GET_QUIZES';

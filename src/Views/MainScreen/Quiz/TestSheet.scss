@@ -1,0 +1,21 @@
+$green: #7ca48c;
+$main: #fefaef;
+$main-dim: #6666662a;
+$text-color:#585656;
+$brown: #b05d3d;
+$button-dim: #e6c4a5bb;
+$correct-ans:rgba(170, 252, 48, 0.541);
+.TestSheet{
+    width: 100%;
+                    
+    border-top: 1px solid $text-color;
+    border-radius: 12px;
+    
+}
+.textshittest{
+    font-size: 20px;
+    color:$text-color;
+    padding:20px;
+    border: 1px solid black;
+    box-shadow: $green 5px 5px;
+}

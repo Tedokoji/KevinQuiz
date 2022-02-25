@@ -35,11 +35,22 @@ $button-dim: #e6c4a5bb;
 }
 .theunit{
     width: 100vw;
+    text-align: center;
     font-size: 20px;
         font-weight: bold;
         margin:10px;
         border-bottom: 1px solid black;
-        box-shadow: $green 5px 5px;
-        color: $text-color;
-        
+            cursor:pointer;
+            color: $text-color;
+       
+    & .subunits{
+        border-top: 1px solid black;
+        &:hover{
+            background-color: $main-dim;
+            cursor:pointer;
+        }
+    }
+}
+.active-unit{
+    background-color: $green;
 }

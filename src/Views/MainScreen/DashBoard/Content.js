@@ -5,27 +5,36 @@ import Thumbnail from '../../../Assets/QuizAssets/Thumbnail';
 import Grade from '../Quiz/Grade';
 import { database } from '../../../Firebase/index';
 import { ref, child, get } from "firebase/database";
-import { createContext } from "react";
-const QuizContext = createContext()
+import {connect} from "react-redux";
+import { quizData } from './../../../Redux/Action';
+import { useNavigate } from 'react-router-dom';
 function Content(props) {
- 
+  const unit1den15 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+  const [toggleunit,setToggleunit] = useState(false)
   const [activegrade,setActivegrade] = useState(6)
   
-  const [Quizdata,setQuizdata] = useState([])
-  
+  const [Quizdata,setQuizdata] = useState([[]])
+  const [currentUnit,setCurrentUnit] = useState(1)
   const [load,setLoad] = useState(false)
+  const navi = useNavigate()
   useLayoutEffect(()=>{
     const getDataQuiz=async()=>{
       get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
         if (snapshot.exists()) {
          Object.entries(snapshot.val()).forEach(datacrap=>{
-           
+           console.log(datacrap);
           datacrap[1].forEach((title,index)=>{
-           
-          setQuizdata( Object.entries(title).map(DATASHIT =>{
-            return DATASHIT
+            console.log(index);
+            console.log(title);
+           if(index === currentUnit) {
+            setQuizdata( Object.entries(title).map(DATASHIT =>{
             
-           }))
+              return DATASHIT
+              
+             }))
+            
+           };
+          
           
           })})
           
@@ -38,10 +47,9 @@ function Content(props) {
     }
     
     getDataQuiz()
-    
-  },[activegrade])
+    props.quizData(Quizdata)
+  },[activegrade,currentUnit])
   useEffect(()=>{
-    
   setTimeout(()=>{
    
     setLoad(true)
@@ -49,20 +57,33 @@ function Content(props) {
   },1000)
 },[])
   return (
-    <QuizContext.Provider value={Quizdata}>
-
-   {load && <div className="content">
+    <>
+      {load && <><div className="content">
+      <div className="theunit" onClick={()=>{setToggleunit(!toggleunit)}}>Unit: {currentUnit}
+      { toggleunit &&
+        unit1den15.map(e=>{
+          return(
+            <div key={e} onClick={()=>{setCurrentUnit(e)}}
+            className={`subunits ${e===currentUnit ? "activeunit" : ""}`}>{e}</div>
+          )
+        })
+      }
+      </div>
+   
       <Grade title="Grade 6" className={activegrade === 6 ? "active-grade":""}
       onClick={()=>{setActivegrade(6)}}>
       
         { activegrade === 6 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
+          console.log(Quizdata[index]);
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
@@ -75,11 +96,13 @@ function Content(props) {
         { activegrade === 7 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
@@ -92,11 +115,13 @@ function Content(props) {
         { activegrade === 8 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
@@ -109,11 +134,13 @@ function Content(props) {
         { activegrade === 9 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
@@ -126,11 +153,13 @@ function Content(props) {
         { activegrade === 10 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
@@ -143,11 +172,13 @@ function Content(props) {
         { activegrade === 11 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
@@ -160,21 +191,32 @@ function Content(props) {
         { activegrade === 12 ? <>
 
       {
-        Quizdata.map(e=>{
+        Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1].tags}
-        onClick={()=>{console.log("hello!");}}/>
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
           )
         })
 
       }
         </>:<></>}
       </Grade> 
-   </div>}
-   </QuizContext.Provider>
-
+   </div>
+   </>}
+    </>
   )
 }
-
-export default Content
+const mapStateToProps = (state)=>{
+  return{
+    quizDatadata: state.quizData
+  }
+}
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    quizData: (e)=>{dispatch(quizData(e))}
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Content)

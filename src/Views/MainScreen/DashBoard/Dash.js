@@ -47,7 +47,7 @@ function Dash() {
         setNav(false)
         
         }}>
-        -Student Mode
+        -Back To DashBoard
     </div>
         <div className="nav-text" onClick={()=>{
         

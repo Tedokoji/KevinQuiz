@@ -3,7 +3,9 @@ import './Grade.scss'
 function Grade(props) {
   return (
     <div className="grade-wrapper ">
-        <p className={`grade-title ${props.className}`} onClick={props.onClick}>{props.title}</p>
+        <p className={`grade-title ${props.className}`}
+         onClick={props.onClick}>{props.title}</p>
+         
         <div className="grade">
             
             {props.children}

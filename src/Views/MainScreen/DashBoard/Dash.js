@@ -31,7 +31,7 @@ function Dash() {
    </div>
   { nav && <div className="navmenu" onMouseLeave={()=>{setNav(false)}}>
         <div className="nav-text" onClick={()=>{
-            if(auth.currentUser?.email === "tedo@gmail.com"){
+            if(auth.currentUser?.email === "chauhhuynhanhtu@gmail.com"){
                navi('/createquiz')
             }
             
@@ -41,7 +41,7 @@ function Dash() {
             -CreateQuiz (only Teachers)
         </div>
         <div className="nav-text" onClick={()=>{
-         if(auth.currentUser?.email === "tedo@gmail.com"){
+         if(auth.currentUser?.email === "chauhhuynhanhtu@gmail.com"){
             navi('/dashboard')
         }
         setNav(false)

@@ -19,7 +19,11 @@ function Dash() {
    <>
    <div className="dashnav">
        <div className="profile-container">
-            <img alt="aaa" className="pro-avt" src={auth.currentUser?.photoURL == null?
+            <img onClick={()=>{
+            navi('/dashboard')
+
+            }}
+             alt="aaa" className="pro-avt" src={auth.currentUser?.photoURL == null?
             defaultpic : auth.currentUser?.photoURL }/>
        </div>
         <div className="profile-name" >{auth.currentUser?.displayName == null ?
@@ -49,14 +53,15 @@ function Dash() {
         }}>
         -Back To DashBoard
     </div>
-        <div className="nav-text" onClick={()=>{
-        
+        <a  href="https://www.facebook.com/evergarden.violet.39501"
+        className="nav-text" onClick={()=>{
+             
             setNav(false)
             
             }}>
-            <a href="https://www.facebook.com/evergarden.violet.39501">
-                -Report bugs, technical issues </a>
-        </div>
+           
+                -Report bugs, technical issues 
+        </a>
    </div>}
    
    

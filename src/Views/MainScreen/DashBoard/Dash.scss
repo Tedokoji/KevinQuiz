@@ -53,6 +53,7 @@ $button-dim: #e6c4a5bb;
         box-shadow: $green 2px 2px;
         margin:10px;
         padding:5px;
+        width: 100vw;
         &:hover{
             background-color: $button-dim;
             cursor:pointer;
@@ -60,12 +61,13 @@ $button-dim: #e6c4a5bb;
             animation-duration:0.3s;
             animation-fill-mode: forwards;
         }
-        & a{
+       
+    }
+     & a{
             text-decoration: none;
             color: $text-color;
 
         }
-    }
 }
 @keyframes focusNav{
     100%{

@@ -92,6 +92,12 @@ function CreateQuiz() {
                     }}
                   type="number" className="unit-input"/>
                 </div>
+                <div className='decorfont'>
+                    Waring: if the previous unit doesn't exist, make sure to create it first then come back. ignore this will crash the grade
+                    <br/>example: if Grade 1 is exists you can create unit less than 2, if you create unit 3, it'll crash.<br/>
+                    Further explanation: if you create unit 7 and unit 6,5,4... haven't created yet. it'll crash<br/>
+                    What should you do?: Create something from Unit 1 to 15 every unit must have 1 question.
+                </div>
                 <div className='create-unit'>
                   Tags:<input value={tags} onChange={(e)=>{
                       setTags(e.target.value)

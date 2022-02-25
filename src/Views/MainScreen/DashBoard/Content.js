@@ -202,6 +202,10 @@ function Content(props) {
       }
         </>:<></>}
       </Grade> 
+      <div className={"decorfont"}>
+        If you're still seeing old results, it is because the grade or the unit you're visiting has no data.
+         Contact your Teacher to create or contact the devs via menu section to report.
+      </div>
    </div>
    </>}
     </>

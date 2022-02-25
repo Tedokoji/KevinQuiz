@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {auth} from '../../../Firebase/index'
 import defaultpic from '../../../staticfiles/defaultpic.png'
@@ -64,4 +64,4 @@ function Dash() {
   )
 }
 
-export default Dash
+export default memo(Dash)

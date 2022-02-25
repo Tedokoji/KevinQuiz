@@ -12,35 +12,36 @@ function Content(props) {
   const [activegrade,setActivegrade] = useState(6)
   
   const [Quizdata,setQuizdata] = useState([])
-const getDataQuiz=async()=>{
-  get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-     Object.entries(snapshot.val()).map(datacrap=>{
-        datacrap[1].map((title,index)=>{
-         
-        setQuizdata( Object.entries(title).map(DATASHIT =>{
-          return DATASHIT
-          
-         }))
-        
-        })})
-      
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
-}
- 
-const [load,setLoad] = useState(false)
-
-useLayoutEffect(()=>{
-  getDataQuiz()
   
-},[activegrade])
-useEffect(()=>{
-
+  const [load,setLoad] = useState(false)
+  useLayoutEffect(()=>{
+    const getDataQuiz=async()=>{
+      get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+         Object.entries(snapshot.val()).forEach(datacrap=>{
+           
+          datacrap[1].forEach((title,index)=>{
+           
+          setQuizdata( Object.entries(title).map(DATASHIT =>{
+            return DATASHIT
+            
+           }))
+          
+          })})
+          
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
+    
+    getDataQuiz()
+    
+  },[activegrade])
+  useEffect(()=>{
+    
   setTimeout(()=>{
    
     setLoad(true)
@@ -52,14 +53,14 @@ useEffect(()=>{
 
    {load && <div className="content">
       <Grade title="Grade 6" className={activegrade === 6 ? "active-grade":""}
-      onClick={()=>{setActivegrade(6);getDataQuiz()}}>
+      onClick={()=>{setActivegrade(6)}}>
       
         { activegrade === 6 ? <>
 
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )
@@ -76,7 +77,7 @@ useEffect(()=>{
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )
@@ -93,7 +94,7 @@ useEffect(()=>{
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )
@@ -110,7 +111,7 @@ useEffect(()=>{
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )
@@ -127,7 +128,7 @@ useEffect(()=>{
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )
@@ -144,7 +145,7 @@ useEffect(()=>{
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )
@@ -161,7 +162,7 @@ useEffect(()=>{
       {
         Quizdata.map(e=>{
           return(
-            <Thumbnail title={e[0]} category="Unit 10" 
+            <Thumbnail key={e[0]} title={e[0]} category="Unit 10" 
             tags={e[1].tags}
         onClick={()=>{console.log("hello!");}}/>
           )

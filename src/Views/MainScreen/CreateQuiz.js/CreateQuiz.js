@@ -33,7 +33,7 @@ function CreateQuiz() {
 
  const CreateQuizInfos =()=>{
     
-     if(title === ""){
+     if(title === "" || tags === ""){
          return
      }
        

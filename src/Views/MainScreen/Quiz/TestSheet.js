@@ -1,68 +1,115 @@
-import React, { useEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { quizData } from '../../../Redux/Action'
 import './TestSheet.scss'
 function TestSheet(props) {
-  console.log(props.quizDatadata);
-const [ans,setAns] = useState({
-    A: '',
-    B: '',
-    C: '',
-    D: ''
-})
-const [correctone,setCorrectone] = useState('')
+  const navi = useNavigate()
+  const [count,setCount] = useState(0)
+  const [correctone,setCorrectone] = useState({
+    A: "",
+    B: "",
+    C: "",
+    D: "",
+  })
+  console.log(correctone.A);
+  const [answeringcheck,setAnsweringcheck] = useState(true)
+  useLayoutEffect(()=>{
+    
 
-const [count,setCount] = useState(1)
-
-  useEffect(()=>{
-    setAns()
-    setCount()
-  },[ans])
+    
+  })
   return (<>
                         <div className="textshittest">
                           {
                             props.quizDatadata[0]
                           }
+                          -number of question(s):{(Object.keys(props.quizDatadata[1]).length)-1}
                           </div> 
    <br/>
                 <div className='sorting-form'>
                 <div className='Quiz-create-form'>
                      
                     <div className="create-Quiz-ahhhhhh">
-                        <div className='create-quiz-formmmm' >
-                        {count}. 
-                   
+                        <div className='create-quiz-formmmm decorfont' >
+                        {count+1}.{props.quizDatadata[1][count]?.question }
+                          
                             
                         </div>
                         <br/>
                       
-                        <div onClick={()=>{setCorrectone("A")}}
-                         className={`ans ${correctone === "A" ? "ans-selected":""}`}>A
+                        <div onClick={()=>{
+                          setAnsweringcheck(false)
+                        }}
+                         className={`ans ${answeringcheck && "idle"} 
+                         ${props.quizDatadata[1][count]?.correct !== "A"? "wrongchoicebitch" :""}
+                         decorfont ${props.quizDatadata[1][count]?.correct === "A" ?
+                          "ans-selected":""}`}>
+                           A. {props.quizDatadata[1][count]?.ans.A}
                             
                             
                          </div>     
-                         <div onClick={()=>{setCorrectone("B")}}
-                          className={`ans ${correctone === "B" ? "ans-selected":""}`}>B
+                         <div onClick={()=>{
+                          setAnsweringcheck(false)
+                        }}
+               className={`ans ${answeringcheck && "idle"}  
+               ${props.quizDatadata[1][count]?.correct !== "B"? "wrongchoicebitch" :""}
+               decorfont ${props.quizDatadata[1][count]?.correct === "B" ?
+                           "ans-selected":""}`}>
+                            B. {props.quizDatadata[1][count]?.ans.B}
                             
                             
                          </div>  
-                         <div onClick={()=>{setCorrectone("C")}}
-                          className={`ans ${correctone === "C" ? "ans-selected":""}`}>C
+                         <div onClick={()=>{
+                          setAnsweringcheck(false)
+                        }}
+                          className={`ans ${answeringcheck && "idle"} 
+                          ${props.quizDatadata[1][count]?.correct !== "C"? "wrongchoicebitch" :""}
+                          decorfont ${props.quizDatadata[1][count]?.correct === "C" ?
+                           "ans-selected":""}`}>
+                            C. {props.quizDatadata[1][count]?.ans.C}
                            
                             
                         </div>  
-                        <div onClick={()=>{setCorrectone("D")}}
-                         className={`ans ${correctone === "D" ? "ans-selected":""}`}>D
+                        <div onClick={()=>{
+                          setAnsweringcheck(false)
+                        }}
+                         className={`ans ${answeringcheck && "idle"}  
+                         ${props.quizDatadata[1][count]?.correct !== "D"? "wrongchoicebitch" :""}
+                         decorfont ${props.quizDatadata[1][count]?.correct === "D" ?
+                          "ans-selected":""}`}>
+                           D. {props.quizDatadata[1][count]?.ans.D}
                            
                             
                         </div>  
-                       
 
                       <br/>
                     </div>
                 </div>
             </div>
             <br/>
+                    <div className='createquizbtn' onClick={()=>{
+                      setAnsweringcheck(true)
+                      setCount(count+1)
+                      
+                      setCorrectone({ A: "",
+                      B: "",
+                      C: "",
+                      D: "",})
+                      if(count >= (Object.keys(props.quizDatadata[1]).length)-2){
+                        setCount(0)
+                        navi("/dashboard")
+                      }
+                    
+                    
+                    }
+                  
+                  
+                  }
+                    
+                    >
+                        Next
+                    </div>
             </>
            
   

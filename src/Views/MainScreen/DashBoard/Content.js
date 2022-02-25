@@ -47,7 +47,6 @@ function Content(props) {
     }
     
     getDataQuiz()
-    props.quizData(Quizdata)
   },[activegrade,currentUnit])
   useEffect(()=>{
   setTimeout(()=>{
@@ -77,10 +76,9 @@ function Content(props) {
 
       {
         Quizdata.map((e,index)=>{
-          console.log(Quizdata[index]);
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>
@@ -99,7 +97,7 @@ function Content(props) {
         Quizdata.map((e,index)=>{
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>
@@ -118,7 +116,7 @@ function Content(props) {
         Quizdata.map((e,index)=>{
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>
@@ -137,7 +135,7 @@ function Content(props) {
         Quizdata.map((e,index)=>{
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>
@@ -156,7 +154,7 @@ function Content(props) {
         Quizdata.map((e,index)=>{
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>
@@ -175,7 +173,7 @@ function Content(props) {
         Quizdata.map((e,index)=>{
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>
@@ -194,7 +192,7 @@ function Content(props) {
         Quizdata.map((e,index)=>{
           return(
             <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
-            tags={e[1].tags}
+            tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
         }}/>

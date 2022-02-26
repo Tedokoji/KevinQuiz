@@ -12,6 +12,7 @@ function CreateQuiz() {
      10,
      11,
      12,
+     13
     ]
  const [grade,setGrade] = useState(6)
  const [unit,setUnit] = useState(1)
@@ -72,6 +73,7 @@ function CreateQuiz() {
                         setTitle(e.target.value)
                         
                         }}
+                        maxLength={12}
                     type="text" className={`unit-input `}/>
                     Required!
                     </div>
@@ -79,8 +81,9 @@ function CreateQuiz() {
                     Grade:{
                         grade6to12.map(e=>{
                             return(
-                                <span onClick={()=>{setGrade(e)}} className={grade === e ? "grade-selected":""} 
-                                key={e}>{e}</span>
+                                <span onClick={()=>{setGrade(e)}} 
+                                className={grade === e ? "grade-selected":""} 
+                                key={e}>{e===13? "Off topic":e}</span>
                             )
                         })
                     }

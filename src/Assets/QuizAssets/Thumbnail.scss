@@ -28,6 +28,17 @@ $button-dim: #e6c4a5bb;
             margin: 5px;
             color: $text-color;
         }
+        & .thumbnail-pen{
+            width: 20px;
+            position: relative;
+            left:60px;
+            cursor:pointer;
+            &:hover{
+                animation: focusPlay;
+                animation-duration:0.3s;
+                animation-fill-mode: forwards;
+            }
+        }
         & .thumbnail-category{
             font-size: 18px;
             font-weight:650;

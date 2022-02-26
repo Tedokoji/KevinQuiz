@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {auth} from '../../../Firebase/index'
 import defaultpic from '../../../staticfiles/defaultpic.png'
 import './Dash.scss'
-
+import { signOut } from "firebase/auth";
 function Dash() {
     const navi = useNavigate()
     const [nav,setNav] = useState(false)
@@ -45,9 +45,7 @@ function Dash() {
             -CreateQuiz (only Teachers)
         </div>
         <div className="nav-text" onClick={()=>{
-         if(auth.currentUser?.email === "chauhhuynhanhtu@gmail.com"){
             navi('/dashboard')
-        }
         setNav(false)
         
         }}>
@@ -62,7 +60,19 @@ function Dash() {
            
                 -Report bugs, technical issues 
         </a>
-   </div>}
+        <div className="nav-text" onClick={()=>{
+            signOut(auth).then(() => {
+              // Sign-out successful.
+            }).catch((error) => {
+              // An error happened.
+            });
+            setNav(false)
+            
+            }}>
+            -Sign out
+        </div>
+   </div>
+   }
    
    
    </>

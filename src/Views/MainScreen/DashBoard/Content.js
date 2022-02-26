@@ -4,7 +4,7 @@ import './Content.scss'
 import Thumbnail from '../../../Assets/QuizAssets/Thumbnail';
 import Grade from '../Quiz/Grade';
 import { database } from '../../../Firebase/index';
-import { ref, child, get } from "firebase/database";
+import { ref, child, get,remove } from "firebase/database";
 import {connect} from "react-redux";
 import { quizData } from './../../../Redux/Action';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,7 @@ function Content(props) {
   const [currentUnit,setCurrentUnit] = useState(1)
   const [load,setLoad] = useState(false)
   const navi = useNavigate()
+  const [yousure,setYousure] = useState(false)
   useLayoutEffect(()=>{
     const getDataQuiz=async()=>{
       get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
@@ -49,12 +50,29 @@ function Content(props) {
     getDataQuiz()
   },[activegrade,currentUnit])
   useEffect(()=>{
-  setTimeout(()=>{
-   
-    setLoad(true)
-    
-  },1000)
-},[])
+    setTimeout(()=>{
+      
+      setLoad(true)
+      
+    },1000)
+  },[])
+  const penonClickthing =()=>{
+    console.log(Quizdata)
+  }
+  const xonClickthing =(e)=>{
+    const ask = prompt('Are you sure? type yes or no')
+    console.log(ask)
+    console.log(e)
+    if(ask === 'yes'){
+      remove(ref(database, 'Grade/' + activegrade + '/Unit/' + currentUnit + "/" + e), {
+      
+      
+      });
+    } 
+    else{
+      return
+    }
+  }
   return (
     <>
       {load && <><div className="content">
@@ -77,7 +95,8 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
@@ -96,7 +115,8 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
@@ -115,7 +135,8 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
@@ -134,7 +155,8 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
@@ -153,7 +175,8 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
@@ -172,7 +195,8 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')
@@ -191,7 +215,28 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
+            tags={e[1]?.tags}
+        onClick={()=>{props.quizData(Quizdata[index])
+            navi('/test')
+        }}/>
+          )
+        })
+
+      }
+        </>:<></>}
+      </Grade> 
+      <Grade title="Off topic" className={activegrade === 13 ? "active-grade":""}
+      onClick={()=>{setActivegrade(13)}}>
+      
+        { activegrade === 13 ? <>
+
+      {
+        Quizdata.map((e,index)=>{
+          return(
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+             key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
             navi('/test')

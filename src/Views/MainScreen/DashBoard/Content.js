@@ -17,7 +17,6 @@ function Content(props) {
   const [currentUnit,setCurrentUnit] = useState(1)
   const [load,setLoad] = useState(false)
   const navi = useNavigate()
-  const [yousure,setYousure] = useState(false)
   useLayoutEffect(()=>{
     const getDataQuiz=async()=>{
       get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
@@ -60,14 +59,16 @@ function Content(props) {
     console.log(Quizdata)
   }
   const xonClickthing =(e)=>{
-    const ask = prompt('Are you sure? type yes or no')
+    const ask = prompt('Are you sure? type yes to confirm')
     console.log(ask)
     console.log(e)
     if(ask === 'yes'){
+     
       remove(ref(database, 'Grade/' + activegrade + '/Unit/' + currentUnit + "/" + e), {
       
       
       });
+     
     } 
     else{
       return
@@ -95,7 +96,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -115,7 +119,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -135,7 +142,12 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+             navi('/update')
+
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -155,7 +167,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -175,7 +190,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -195,7 +213,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -215,7 +236,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
@@ -235,7 +259,10 @@ function Content(props) {
       {
         Quizdata.map((e,index)=>{
           return(
-            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={penonClickthing}
+            <Thumbnail xonClick={()=>xonClickthing(e[0])} penonClick={()=>{penonClickthing()
+             props.quizData(Quizdata[index])
+             navi('/update')
+            }}
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])

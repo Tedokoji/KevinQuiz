@@ -51,7 +51,9 @@ function CreateQuiz() {
      set(ref(database, 'Grade/' + grade + '/Unit/' + unit + "/" + title+"/"+count), {
          question:question,
          ans:ans,
-         correct:correctone
+         correct:correctone,
+         grade:grade,
+         unit:unit,
          
         });
         setQuestion("")

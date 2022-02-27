@@ -68,6 +68,7 @@ function Content(props) {
       
       
       });
+    getDataQuiz()
      
     } 
     else{

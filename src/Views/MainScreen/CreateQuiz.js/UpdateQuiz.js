@@ -19,9 +19,9 @@ function UpdateQuiz(props) {
  const [correctone,setCorrectone] = useState(props.quizDatadata[1][count]?.correct)
 
  const addQuizesToDB=()=>{
-     console.log(count)
+     console.log(count)//count=count
      setCount(count+1)
-
+      //count still = count @@ lmao what
      update(ref(database,'Grade/' + props.quizDatadata[1][count]?.grade + '/Unit/' + props.quizDatadata[1][count]?.unit + "/" + props.quizDatadata[0]+"/"+count ), {
          question:question,
          ans:ans,

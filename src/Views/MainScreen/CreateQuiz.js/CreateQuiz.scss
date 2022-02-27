@@ -104,7 +104,18 @@ $correct-ans:rgba(170, 252, 48, 0.541);
     border-radius: 5px;
     border: 1px solid $text-color;   
     cursor:pointer;
-   
+    &:hover{
+        animation: focusAns;
+        animation-duration:0.2s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes focusAns{
+        100%{
+            transform: scale(1.05) translateX(35px);
+            box-shadow: $green 5px 5px;
+            
+        }
+    }
 }
 .ans-selected{
    background-color: $correct-ans

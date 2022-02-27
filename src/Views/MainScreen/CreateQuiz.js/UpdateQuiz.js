@@ -34,6 +34,7 @@ function UpdateQuiz(props) {
            return
          }
         setQuestion(props.quizDatadata[1][count+1]?.question)
+        setCorrectone(props.quizDatadata[1][count+1]?.correct)
         setAns({
             A: props.quizDatadata[1][count+1]?.ans.A,
             B: props.quizDatadata[1][count+1]?.ans.B,

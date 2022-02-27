@@ -17,39 +17,39 @@ function Content(props) {
   const [currentUnit,setCurrentUnit] = useState(1)
   const [load,setLoad] = useState(false)
   const navi = useNavigate()
-  const getDataQuiz=async()=>{
-    setTimeout(()=>{
-      
-      setLoad(true)
-      
-    },1000)
-    get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
-      if (snapshot.exists()) {
-       Object.entries(snapshot.val()).forEach(datacrap=>{
-         console.log(datacrap);
-        datacrap[1].forEach((title,index)=>{
-          console.log(index);
-          console.log(title);
-         if(index === currentUnit) {
-          setQuizdata( Object.entries(title).map(DATASHIT =>{
-          
-            return DATASHIT
-            
-           }))
-          
-         };
-        
-        
-        })})
-        
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-      console.error(error);
-    });
-  }
   useLayoutEffect(()=>{
+    const getDataQuiz=async()=>{
+      setTimeout(()=>{
+        
+        setLoad(true)
+        
+      },1000)
+      get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+         Object.entries(snapshot.val()).forEach(datacrap=>{
+           console.log(datacrap);
+          datacrap[1].forEach((title,index)=>{
+            console.log(index);
+            console.log(title);
+           if(index === currentUnit) {
+            setQuizdata( Object.entries(title).map(DATASHIT =>{
+            
+              return DATASHIT
+              
+             }))
+            
+           };
+          
+          
+          })})
+          
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
     
     getDataQuiz()
   },[activegrade,currentUnit])
@@ -69,7 +69,38 @@ function Content(props) {
         
         
       });
-      
+      const getDataQuiz=async()=>{
+        setTimeout(()=>{
+          
+          setLoad(true)
+          
+        },1000)
+        get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
+          if (snapshot.exists()) {
+           Object.entries(snapshot.val()).forEach(datacrap=>{
+             console.log(datacrap);
+            datacrap[1].forEach((title,index)=>{
+              console.log(index);
+              console.log(title);
+             if(index === currentUnit) {
+              setQuizdata( Object.entries(title).map(DATASHIT =>{
+              
+                return DATASHIT
+                
+               }))
+              
+             };
+            
+            
+            })})
+            
+          } else {
+            console.log("No data available");
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+      }
       getDataQuiz()
     } 
     else{

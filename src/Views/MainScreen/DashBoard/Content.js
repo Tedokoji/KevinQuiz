@@ -17,44 +17,45 @@ function Content(props) {
   const [currentUnit,setCurrentUnit] = useState(1)
   const [load,setLoad] = useState(false)
   const navi = useNavigate()
-  useLayoutEffect(()=>{
-    const getDataQuiz=async()=>{
-      get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-         Object.entries(snapshot.val()).forEach(datacrap=>{
-           console.log(datacrap);
-          datacrap[1].forEach((title,index)=>{
-            console.log(index);
-            console.log(title);
-           if(index === currentUnit) {
-            setQuizdata( Object.entries(title).map(DATASHIT =>{
-            
-              return DATASHIT
-              
-             }))
-            
-           };
-          
-          
-          })})
-          
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
-    }
-    
-    getDataQuiz()
-  },[activegrade,currentUnit])
-  useEffect(()=>{
+  const getDataQuiz=async()=>{
     setTimeout(()=>{
       
       setLoad(true)
       
     },1000)
-  },[])
+    get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
+      if (snapshot.exists()) {
+       Object.entries(snapshot.val()).forEach(datacrap=>{
+         console.log(datacrap);
+        datacrap[1].forEach((title,index)=>{
+          console.log(index);
+          console.log(title);
+         if(index === currentUnit) {
+          setQuizdata( Object.entries(title).map(DATASHIT =>{
+          
+            return DATASHIT
+            
+           }))
+          
+         };
+        
+        
+        })})
+        
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+  useLayoutEffect(()=>{
+    
+    getDataQuiz()
+  },[activegrade,currentUnit])
+  useEffect(()=>{
+   console.log("rendering Contents");
+  })
   const penonClickthing =()=>{
     console.log(Quizdata)
   }
@@ -63,13 +64,13 @@ function Content(props) {
     console.log(ask)
     console.log(e)
     if(ask === 'yes'){
-     
+      
       remove(ref(database, 'Grade/' + activegrade + '/Unit/' + currentUnit + "/" + e), {
-      
-      
+        
+        
       });
-    getDataQuiz()
-     
+      
+      getDataQuiz()
     } 
     else{
       return

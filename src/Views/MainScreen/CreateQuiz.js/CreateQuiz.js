@@ -75,7 +75,7 @@ function CreateQuiz() {
                         setTitle(e.target.value)
                         
                         }}
-                        maxLength={12}
+                        maxLength={14}
                     type="text" className={`unit-input `}/>
                     Required!
                     </div>

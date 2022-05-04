@@ -6,6 +6,7 @@ import { auth,provider,fbprovider } from '../../Firebase';
 import kevinlogo from '../../staticfiles/Kevin logo.jpg';
 import ggicon from '../../staticfiles/gg.png';
 import fbicon from '../../staticfiles/fb.png';
+import hahalmao from '../../staticfiles/logo192.png';
 import Button from '../../Assets/Buttons/Button';
 import { useNavigate } from 'react-router-dom';
 import LoginButton from '../../Assets/Buttons/LoginButton';
@@ -68,6 +69,22 @@ function Login() {
       setCount(count+1)
     }
   }
+  // temporary
+  const signInWithFakeEmailandPass2=async()=>{
+    console.log("singin")
+    try{
+      const user = await signInWithEmailAndPassword(auth,'email@gmail.com',123456)
+      if (user){
+          navi('/dashboard')
+      }
+    }
+    catch{
+      console.log('wrong')
+      setWrong(true)
+      setCount(count+1)
+    }
+  }
+  //
   const [count,setCount] = useState(0)
   const [Teacher,setTeacher] = useState(false)
   const [Student,setStudent] = useState(true)
@@ -97,6 +114,8 @@ function Login() {
          onClick={signIntWithGoogleAuth}/>
          <LoginButton text="Sign In With Facebook" src={fbicon}
          onClick={signInWithFacebookAuth}/>
+         <LoginButton text="Guest Entry(temporary)" src={hahalmao} 
+         onClick={signInWithFakeEmailandPass2}/>
         </>}
        { Teacher && <>
         <h2>Teacher login:</h2>

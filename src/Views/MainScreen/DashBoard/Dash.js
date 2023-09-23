@@ -35,7 +35,7 @@ function Dash() {
    </div>
   { nav && <div className="navmenu" onMouseLeave={()=>{setNav(false)}}>
         <div className="nav-text" onClick={()=>{
-            if(auth.currentUser?.email === "violetevergarden137@gmail.com"){
+            if(auth.currentUser?.displayName === "Trung Dũng Đặng Huỳnh"){
                navi('/createquiz')
             }
             

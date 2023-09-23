@@ -8,6 +8,7 @@ import {Provider } from "react-redux"
 import { store } from './Redux/Store';
 import TestSheet from "./Views/MainScreen/Quiz/TestSheet";
 import UpdateQuiz from './Views/MainScreen/CreateQuiz.js/UpdateQuiz'
+import Roles from "./Views/MainScreen/Roles";
 function App() {
   return (
     <Provider store={store}>
@@ -19,7 +20,10 @@ function App() {
         <Route path="/createquiz" element={<><Dash/><CreateQuiz/></>}/>
         <Route path="/test" element={<><Dash/><TestSheet/></>}/>
         <Route path="/update" element={<><Dash/><UpdateQuiz/> </>}/>
-
+      
+      
+        <Route path="/createTeacherOrStudents" element={<><Dash/><Roles/> </>}/>
+        
     </Routes></Provider>
   );
 }

@@ -45,7 +45,13 @@ function Dash() {
             -CreateQuiz (only Teachers)
         </div>
         <div className="nav-text" onClick={()=>{
-            navi('/dashboard')
+
+navi('/createTeacherOrStudents')  
+}}>
+-CreateRoles-adminonly
+</div>
+        <div className="nav-text" onClick={()=>{
+            navi('/createTeacherOrStudents')
         setNav(false)
         
         }}>
@@ -60,6 +66,7 @@ function Dash() {
            
                 -Report bugs, technical issues 
         </a>
+        
         <div className="nav-text" onClick={()=>{
             signOut(auth).then(() => {
               // Sign-out successful.
@@ -71,6 +78,7 @@ function Dash() {
             }}>
             -Sign out
         </div>
+        
    </div>
    }
    

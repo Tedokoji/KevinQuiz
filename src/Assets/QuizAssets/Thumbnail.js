@@ -6,7 +6,7 @@ function Thumbnail(props) {
     <div className="thumbnail-wrapper">
         <div className="thumbnail-content">
           <div className="thumbnail-title">{props.title}
-          {auth.currentUser?.email === "chauhhuynhanhtu@gmail.com" && <><img className="thumbnail-pen" alt="pen"
+          {auth.currentUser?.displayName === "Trung Dũng Đặng Huỳnh" && <><img className="thumbnail-pen" alt="pen"
            onClick={props.penonClick}
            src="https://img.icons8.com/color/48/000000/pen.png"/>
 

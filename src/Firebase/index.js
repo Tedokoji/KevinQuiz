@@ -20,4 +20,4 @@ export const auth = getAuth(app)
 export const db = getFirestore(app)
 export const database = getDatabase(app);
 export const provider = new GoogleAuthProvider();
-export const fbprovider = new FacebookAuthProvider();
+export const fbprovider = new FacebookAuthProvider(); //Lỗi

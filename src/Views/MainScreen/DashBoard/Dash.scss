@@ -45,7 +45,7 @@ $button-dim: #e6c4a5bb;
     border-radius: 5px;
     background-color: white;
     width: 100vw;
-    height:200px;
+    z-index: 100;
     position: fixed;
     & .nav-text{
         font-size: 20px;

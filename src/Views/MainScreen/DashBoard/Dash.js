@@ -51,7 +51,7 @@ navi('/createTeacherOrStudents')
 -CreateRoles-adminonly
 </div>
         <div className="nav-text" onClick={()=>{
-            navi('/createTeacherOrStudents')
+            navi('/dashboard')
         setNav(false)
         
         }}>

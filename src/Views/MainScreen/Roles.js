@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../Login/Login.scss'
 import { useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, isSignInWithEmailLink } from "firebase/auth";
 import Button from '../../Assets/Buttons/Button';
 
 function Roles() {
@@ -24,6 +24,7 @@ function Roles() {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    
     // ..
   });
   useEffect(()=>{
@@ -48,7 +49,8 @@ function Roles() {
           className={`password ${wrong && 'wrong'} ${count >= 5 ? 'invis':''} `}/>
           {count >= 5 ? <h2>Bro why you must hack this web man, damn.<br/>
              Leave my web alone, please, I'm begging you.</h2>: <></>}
-        <Button text="Create" onClick={()=>{createUserWithEmailAndPassword(auth,email,pass)}}/>
+        <Button text="Create" onClick={()=>{
+           createUserWithEmailAndPassword(auth,email,pass)}}/>
     </div>
     </div>
   )

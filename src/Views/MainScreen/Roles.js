@@ -3,7 +3,7 @@ import '../Login/Login.scss'
 import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, isSignInWithEmailLink } from "firebase/auth";
 import Button from '../../Assets/Buttons/Button';
-
+import '../MainScreen/Role.scss'
 function Roles() {
   const [email,setEmail] = useState('')
   const [pass,setPass] = useState('')
@@ -39,6 +39,9 @@ function Roles() {
   return (
     <div className="Screen">
         <div className="Login-wrapper">
+          <p>
+            Create Accounts?
+            </p>
       <p>email:</p>
           <input 
            onChange={(e)=>{setEmail(e.target.value)}}

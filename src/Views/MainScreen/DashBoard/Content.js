@@ -28,6 +28,7 @@ function Content(props) {
         if (snapshot.exists()) {
          Object.entries(snapshot.val()).forEach(datacrap=>{
            console.log(datacrap);
+
           datacrap[1].forEach((title,index)=>{
             console.log(index);
             console.log(title);
@@ -53,6 +54,8 @@ function Content(props) {
     
     getDataQuiz()
   },[activegrade,currentUnit])
+
+
   useEffect(()=>{
    console.log("rendering Contents");
   })
@@ -69,7 +72,7 @@ function Content(props) {
         
         
       });
-      const getDataQuiz=async()=>{
+    const getDataQuiz=async()=>{
         setTimeout(()=>{
           
           setLoad(true)
@@ -79,6 +82,7 @@ function Content(props) {
           if (snapshot.exists()) {
            Object.entries(snapshot.val()).forEach(datacrap=>{
              console.log(datacrap);
+             props.quizData(datacrap)
             datacrap[1].forEach((title,index)=>{
               console.log(index);
               console.log(title);
@@ -136,6 +140,7 @@ function Content(props) {
              key={e[0]} title={e[0]} category={"Multiple-choice"} 
             tags={e[1]?.tags}
         onClick={()=>{props.quizData(Quizdata[index])
+          console.log(Quizdata[index])
             navi('/test')
         }}/>
           )

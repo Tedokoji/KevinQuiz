@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { quizData } from '../../../Redux/Action'
 import './TestSheet.scss'
+import Timer from './Timer'
 function TestSheet(props) {
   const navi = useNavigate()
+  const [points,setPoints] = useState(0);
   const [count,setCount] = useState(0)
   const [correctone,setCorrectone] = useState({
     A: "",
@@ -26,6 +28,8 @@ function TestSheet(props) {
                           }
                           -number of question(s):{(Object.keys(props.quizDatadata[1]).length)-1}
                           -Hint: <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click here</a>
+                          -Points: {points}
+                          <Timer initialMinute={((Object.keys(props.quizDatadata[1]).length)-1)} initialSeconds={0}></Timer>
                           </div> 
    <br/>
                 <div className='sorting-form'>
@@ -41,6 +45,9 @@ function TestSheet(props) {
                       
                         <div onClick={()=>{
                           setAnsweringcheck(false)
+                          if(props.quizDatadata[1][count]?.correct == "A" ){
+                            setPoints(points + 1)
+                          }
                         }}
                          className={`ans ${answeringcheck && "idle"} 
                          ${props.quizDatadata[1][count]?.correct !== "A"? "wrongchoicebitch" :""}
@@ -52,6 +59,9 @@ function TestSheet(props) {
                          </div>     
                          <div onClick={()=>{
                           setAnsweringcheck(false)
+                          if(props.quizDatadata[1][count]?.correct == "B" ){
+                            setPoints(points + 1)
+                          }
                         }}
                className={`ans ${answeringcheck && "idle"}  
                ${props.quizDatadata[1][count]?.correct !== "B"? "wrongchoicebitch" :""}
@@ -63,6 +73,9 @@ function TestSheet(props) {
                          </div>  
                          <div onClick={()=>{
                           setAnsweringcheck(false)
+                          if(props.quizDatadata[1][count]?.correct == "C" ){
+                            setPoints(points + 1)
+                          }
                         }}
                           className={`ans ${answeringcheck && "idle"} 
                           ${props.quizDatadata[1][count]?.correct !== "C"? "wrongchoicebitch" :""}
@@ -74,6 +87,9 @@ function TestSheet(props) {
                         </div>  
                         <div onClick={()=>{
                           setAnsweringcheck(false)
+                          if(props.quizDatadata[1][count]?.correct == "D" ){
+                            setPoints(points + 1)
+                          }
                         }}
                          className={`ans ${answeringcheck && "idle"}  
                          ${props.quizDatadata[1][count]?.correct !== "D"? "wrongchoicebitch" :""}
@@ -99,6 +115,8 @@ function TestSheet(props) {
                       D: "",})
                       if(count >= (Object.keys(props.quizDatadata[1]).length)-2){
                         setCount(0)
+                        setPoints(0)
+
                         navi("/dashboard")
                       }
                     

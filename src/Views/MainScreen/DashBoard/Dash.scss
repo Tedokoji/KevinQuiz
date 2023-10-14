@@ -4,7 +4,19 @@ $main-dim: #6666662a;
 $text-color:#585656;
 $brown: #b05d3d;
 $button-dim: #e6c4a5bb;
-
+.SearchBtn{
+    font-size: 20px;
+        font-weight: bold;
+        margin:10px;
+        border-bottom: 1px solid black;
+        box-shadow: $green 5px 5px;
+        color: $text-color;
+        &:hover{
+            background-color: $button-dim;
+            cursor:pointer;
+         
+        }
+}
 .dashnav{
     width: 100vw;
     height: 50px;

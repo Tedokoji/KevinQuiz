@@ -27,11 +27,9 @@ function Content(props) {
       get(child(ref(database), `Grade/${activegrade}`)).then((snapshot) => {
         if (snapshot.exists()) {
          Object.entries(snapshot.val()).forEach(datacrap=>{
-           console.log(datacrap);
-
+           
           datacrap[1].forEach((title,index)=>{
-            console.log(index);
-            console.log(title);
+            
            if(index === currentUnit) {
             setQuizdata( Object.entries(title).map(DATASHIT =>{
             

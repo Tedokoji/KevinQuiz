@@ -25,8 +25,7 @@ function Dash(props) {
   const [tempGrade,setTempGrade] = useState()
   const [tempUnit,setTempUnit] = useState()
     useEffect(()=>{
-        console.log(auth.currentUser?.photoURL,auth.currentUser?.displayName);
-        console.log(auth);
+     
         if (auth.currentUser?.email === undefined){
             navi('/login')
         }
@@ -77,10 +76,12 @@ function Dash(props) {
                                         console.log(graderesult)
                                         Object.entries(graderesult).forEach(e =>{
                                             console.log("Unit?")
+                                            
                                             console.log(e)
                                         })
                                     })
                                     setTempGrade(e[0])
+                                    
                                     
                                 }
                             })

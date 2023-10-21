@@ -16,7 +16,7 @@ const Timer = (props) => {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(myInterval)
-                    window.alert("Ban da het gio")
+                    window.alert("Timed out")
                     navi("/dashboard")
                 } else {
                     setMinutes(minutes - 1);
@@ -33,7 +33,10 @@ const Timer = (props) => {
         <div>
         { minutes === 0 && seconds === 0
             ? null
-            : <h1> {minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</h1> 
+            : 
+            <div >
+                <h1 > <span className='TimerWrapper'>{minutes}:{seconds < 10 ?  `0${seconds}` : seconds}</span></h1> 
+            </div>
         }
         </div>
     )

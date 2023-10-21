@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect,useLayoutEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { quizData } from '../../../Redux/Action'
@@ -8,6 +8,7 @@ function TestSheet(props) {
   const navi = useNavigate()
   const [points,setPoints] = useState(0);
   const [count,setCount] = useState(0)
+  const [pointsCheck,setpointsCheck] = useState(true)
   const [correctone,setCorrectone] = useState({
     A: "",
     B: "",
@@ -15,20 +16,21 @@ function TestSheet(props) {
     D: "",
   })
   console.log(correctone.A);
+  
   const [answeringcheck,setAnsweringcheck] = useState(true)
-  useLayoutEffect(()=>{
-    
-
-    
+  useEffect(()=>{
+   
   })
   return (<>
                         <div className="textshittest">
                           {
-                            props.quizDatadata[0]
+                            
+                              props.quizDatadata[0]
+                            
                           }
                           -number of question(s):{(Object.keys(props.quizDatadata[1]).length)-1}
                           -Hint: <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click here</a>
-                          -Points: {points}
+                          <h3 className='Points'>Points: {points}</h3>
                           <Timer initialMinute={((Object.keys(props.quizDatadata[1]).length)-1)} initialSeconds={0}></Timer>
                           </div> 
    <br/>
@@ -45,8 +47,10 @@ function TestSheet(props) {
                       
                         <div onClick={()=>{
                           setAnsweringcheck(false)
-                          if(props.quizDatadata[1][count]?.correct == "A" ){
+                          if(props.quizDatadata[1][count]?.correct == "A" && pointsCheck){
                             setPoints(points + 1)
+                          }else{
+                            setpointsCheck(false)
                           }
                         }}
                          className={`ans ${answeringcheck && "idle"} 
@@ -59,8 +63,10 @@ function TestSheet(props) {
                          </div>     
                          <div onClick={()=>{
                           setAnsweringcheck(false)
-                          if(props.quizDatadata[1][count]?.correct == "B" ){
+                          if(props.quizDatadata[1][count]?.correct == "B" && pointsCheck){
                             setPoints(points + 1)
+                          }else{
+                            setpointsCheck(false)
                           }
                         }}
                className={`ans ${answeringcheck && "idle"}  
@@ -73,8 +79,10 @@ function TestSheet(props) {
                          </div>  
                          <div onClick={()=>{
                           setAnsweringcheck(false)
-                          if(props.quizDatadata[1][count]?.correct == "C" ){
+                          if(props.quizDatadata[1][count]?.correct == "C" && pointsCheck){
                             setPoints(points + 1)
+                          }else{
+                            setpointsCheck(false)
                           }
                         }}
                           className={`ans ${answeringcheck && "idle"} 
@@ -87,8 +95,10 @@ function TestSheet(props) {
                         </div>  
                         <div onClick={()=>{
                           setAnsweringcheck(false)
-                          if(props.quizDatadata[1][count]?.correct == "D" ){
+                          if(props.quizDatadata[1][count]?.correct == "D" && pointsCheck ){
                             setPoints(points + 1)
+                          }else{
+                            setpointsCheck(false)
                           }
                         }}
                          className={`ans ${answeringcheck && "idle"}  
@@ -108,7 +118,7 @@ function TestSheet(props) {
                     <div className='createquizbtn' onClick={()=>{
                       setAnsweringcheck(true)
                       setCount(count+1)
-                      
+                      setpointsCheck(true)
                       setCorrectone({ A: "",
                       B: "",
                       C: "",

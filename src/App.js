@@ -9,6 +9,7 @@ import { store } from './Redux/Store';
 import TestSheet from "./Views/MainScreen/Quiz/TestSheet";
 import UpdateQuiz from './Views/MainScreen/CreateQuiz.js/UpdateQuiz'
 import Roles from "./Views/MainScreen/Roles";
+import UserManagement from "./Views/MainScreen/DashBoard/UserManagement";
 function App() {
   return (
     <Provider store={store}>
@@ -23,6 +24,7 @@ function App() {
       
       
         <Route path="/createTeacherOrStudents" element={<><Dash/><Roles/> </>}/>
+        <Route path="/usermanage" element={<><Dash/><UserManagement/></>}/>
         
     </Routes></Provider>
   );

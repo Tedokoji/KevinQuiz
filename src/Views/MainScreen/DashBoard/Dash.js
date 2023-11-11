@@ -38,6 +38,7 @@ function Dash(props) {
   return (
    <>
    <div className="dashnav">
+   
        <div className="profile-container">
             <img onClick={()=>{
             navi('/dashboard')
@@ -49,6 +50,23 @@ function Dash(props) {
         <div className="profile-name" >{auth.currentUser?.displayName == null ?
             'Teacher Mode' : auth.currentUser?.displayName}
         </div>
+        <>
+        <div onClick={()=>{
+          if(auth.currentUser?.displayName === "Trung Dũng Đặng Huỳnh"){
+            navi('/usermanage')
+         }
+        }}>
+          UM
+        </div>
+        </>
+        <div className='SearchBtn'>
+          <a href='https://test-english.com/use-of-english/b2/b2-english-test-2-multiple-choice-questions/'>Blogs</a>
+        </div>
+        <>
+          
+               
+          
+        </>
         <div className='SearchBar' onClick={()=>{
 
         }}>
